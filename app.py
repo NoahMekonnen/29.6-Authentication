@@ -24,11 +24,11 @@ def home():
 def register():
     form = UserForm()
     if form.validate_on_submit():
-        username = form.data.username
-        password = form.data.password
-        email = form.data.email
-        first_name = form.data.first_name
-        last_name = form.data.last_name
+        username = form.data['username']
+        password = form.data['password']
+        email = form.data['email']
+        first_name = form.data['first_name']
+        last_name = form.data['last_name']
 
         new_user = User(username=username,password=password,email=email,first_name=first_name,last_name=last_name)
         db.session.add(new_user)
@@ -60,7 +60,7 @@ def login():
 def secret():
     return "You made it!"
 
-@app.route('logout')
+@app.route('/logout')
 def logout():
     session.pop('user_id')
     return redirect('/')

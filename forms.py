@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, FloatField, PasswordField
-from wtforms.validators import NumberRange
+from wtforms.validators import Length
 
 class UserForm(FlaskForm):
 
@@ -8,11 +8,11 @@ class UserForm(FlaskForm):
 
     password = PasswordField("Password")
 
-    email = StringField("Email", validators=[NumberRange(max=50)])
+    email = StringField("Email", validators=[Length(max=50)])
 
-    first_name = StringField("First Name", validators=[NumberRange(max=30)])
+    first_name = StringField("First Name", validators=[Length(max=30)])
 
-    last_name = StringField("Last Name", validators=[NumberRange(max=30)])
+    last_name = StringField("Last Name", validators=[Length(max=30)])
 
 class LoginForm(FlaskForm):
 
@@ -22,7 +22,7 @@ class LoginForm(FlaskForm):
 
 class FeedbackForm(FlaskForm):
 
-    title = StringField("Title", validators=[NumberRange(max=100)])
+    title = StringField("Title", validators=[Length(max=100)])
 
     content = StringField("Title")
 
