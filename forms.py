@@ -24,6 +24,4 @@ class FeedbackForm(FlaskForm):
 
     title = StringField("Title", validators=[Length(max=100)])
 
-    content = StringField("Title")
-
-    username = StringField("username")
+    content = StringField("Content")

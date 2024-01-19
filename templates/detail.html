@@ -5,7 +5,15 @@
 {% block content %}
 {{user.username}}
 <ul>
-    <li>{{user.first_name}} {{user.last_name}}</li>
-    <li>{{user.email}}</li>
+    {% for feedback in user.feedback %}
+   <li> 
+        <p>{{feedback.title}}</p>
+        <p>{{feedback.content}}<p>
+        <a href="/feedback/{{feedback.id}}/update">Edit</a>
+        <form action="/feedback/{{feedback.id}}/delete" method = "POST">
+        <button>Delete</button>
+        </form>
+    </li>
+    {% endfor %}
 </ul>
 {% endblock %}

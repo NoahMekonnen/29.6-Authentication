@@ -19,6 +19,8 @@ class User(db.Model):
 
     last_name = db.Column(db.Text,nullable=False)
 
+    feedback = db.relationship('Feedback', backref = 'user' )
+
 class Feedback(db.Model):
     
     __tablename__="feedback"
@@ -29,6 +31,5 @@ class Feedback(db.Model):
 
     content = db.Column(db.Text,nullable=False)
 
-    username = db.Column(db.Text,db.ForeignKey('users.username'))
+    username = db.Column(db.Text, db.ForeignKey('users.username'),nullable=False)
 
-    user = db.relationship('User', backref = 'feedback' )
